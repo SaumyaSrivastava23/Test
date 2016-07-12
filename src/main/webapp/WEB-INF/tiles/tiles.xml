@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+       
+<tiles-definitions>
+
+    <definition name="indexTemplate" template="/WEB-INF/tilesTemplate/indexTemplate.jsp">
+        <put-attribute name="body" value="" />
+    </definition> 
+    
+    <definition name="homeTemplate" template="/WEB-INF/tilesTemplate/homeTemplate.jsp">
+    	<put-attribute name="header" value="/WEB-INF/view/jsp/design/header.jsp" />
+    	<put-attribute name="footer" value="/WEB-INF/view/jsp/design/footer.jsp" />
+        <put-attribute name="body" value="" />
+    </definition>
+      
+    <definition name="index" extends="homeTemplate">
+        <put-attribute name="title" value="TEST -  Home" />
+        <put-attribute name="body" value="/WEB-INF/view/jsp/index.jsp" />
+    </definition>
+    
+    <definition name="login" extends="homeTemplate">
+        <put-attribute name="title" value="TEST -  Login" />
+        <put-attribute name="body" value="/WEB-INF/view/jsp/admin/login.jsp" />
+    </definition>
+    
+    <definition name="forgotPassword" extends="homeTemplate">
+        <put-attribute name="title" value="TEST -  Forgot Password" />
+        <put-attribute name="body" value="/WEB-INF/view/jsp/admin/forgotPassword.jsp" />
+    </definition>
+    
+    <definition name="resetPassword" extends="homeTemplate">
+        <put-attribute name="title" value="TEST -  Reset Password" />
+        <put-attribute name="body" value="/WEB-INF/view/jsp/admin/resetPassword.jsp" />
+    </definition>
+    
+    <definition name="addUser" extends="homeTemplate">
+        <put-attribute name="title" value="TEST -  Register" />
+        <put-attribute name="body" value="/WEB-INF/view/jsp/admin/register.jsp" />
+    </definition>
+    
+    <definition name="contact" extends="homeTemplate">
+        <put-attribute name="title" value="TEST -  Contact Us" />
+        <put-attribute name="body" value="/WEB-INF/view/jsp/admin/contact_us.jsp" />
+    </definition>
+    
+    <definition name="error" extends="homeTemplate">
+        <put-attribute name="title" value="TEST -  Error" />
+        <put-attribute name="body" value="/WEB-INF/view/jsp/error.jsp" />
+    </definition>
+    
+    <definition name="adminDashboard" extends="homeTemplate">
+        <put-attribute name="title" value="TEST -  Dashboard" />
+        <put-attribute name="body" value="/WEB-INF/view/jsp/admin/dashboard.jsp" />
+    </definition>
+    
+    <definition name="userDashboard" extends="homeTemplate">
+        <put-attribute name="title" value="TEST -  Dashboard" />
+        <put-attribute name="body" value="/WEB-INF/view/jsp/admin/dashboard.jsp" />
+    </definition>
+    
+    <definition name="aboutUs" extends="homeTemplate">
+        <put-attribute name="title" value="TEST -  About Us" />
+        <put-attribute name="body" value="/WEB-INF/view/jsp/admin/aboutUs.jsp" />
+    </definition>
+    
+    <definition name="services" extends="homeTemplate">
+        <put-attribute name="title" value="TEST -  Services" />
+        <put-attribute name="body" value="/WEB-INF/view/jsp/admin/services.jsp" />
+    </definition>
+    
+    <definition name="team" extends="homeTemplate">
+        <put-attribute name="title" value="TEST -  Team" />
+        <put-attribute name="body" value="/WEB-INF/view/jsp/admin/team.jsp" />
+    </definition>
+    
+    
+    <definition name="addRecipe" extends="homeTemplate">
+        <put-attribute name="title" value="TEST -  Team" />
+        <put-attribute name="body" value="/WEB-INF/view/jsp/admin/addRecipe.jsp" />
+    </definition>
+    
+</tiles-definitions>
