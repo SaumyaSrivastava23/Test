@@ -12,7 +12,7 @@
 <body>
 
 
-<section id="contact-page">
+<section>
         <div class="container">
             <div class="center">
             <br>        
