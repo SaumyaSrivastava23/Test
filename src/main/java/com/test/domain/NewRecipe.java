@@ -20,6 +20,7 @@ public class NewRecipe {
 	private int recipeId;
 	private Registration registration;
 	private String recipeTitle;
+	private String ingredients;
 	private String recipeDetail;
 	private String recipeImage;
 	private Date createdDate;
@@ -45,6 +46,16 @@ public class NewRecipe {
 	public void setRecipeTitle(String recipeTitle) {
 		this.recipeTitle = recipeTitle;
 	}
+	
+	
+	@Lob
+	@Column	public String getIngredients() {
+		return ingredients;
+	}
+	public void setIngredients(String ingredients) {
+		this.ingredients = ingredients;
+	}
+	
 	
 	@Lob
 	@Column

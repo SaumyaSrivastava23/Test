@@ -14,6 +14,9 @@ public class NewRecipeModel {
 	@NotEmpty(message="{NotEmpty.recForm.recipeDetail}")
 	private String recipeDetail;
 	
+	@NotEmpty(message="{NotEmpty.recForm.ingredients}")
+	private String ingredients;
+	
 	private MultipartFile recipeImage;
 	
 	
@@ -49,11 +52,15 @@ public class NewRecipeModel {
 	public void setRecipeImage(MultipartFile recipeImage) {
 		this.recipeImage = recipeImage;
 	}
-	
-	
-	
-	
-	
-	
 
+	
+	
+	public String getIngredients() {
+		return ingredients;
+	}
+	public void setIngredients(String ingredients) {
+		this.ingredients = ingredients;
+	}
+	
+	
 }

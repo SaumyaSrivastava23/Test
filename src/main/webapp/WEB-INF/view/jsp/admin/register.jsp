@@ -12,10 +12,11 @@
 <body>
 
 
-<section id="contact-page">
+<section>
         <div class="container">
+        <div class="box box-info">
             <div class="center">  
-            <br>      
+                
                 <h2>Register Here</h2>
             </div> 
             <div class="row contact-wrap"> 
@@ -91,7 +92,7 @@
 				      </div>
                          
                </form:form>
-               
+              </div> 
              </div><!--/.row-->
         </div><!--/.container-->
     </section><!--/#contact-page-->
