@@ -22,7 +22,7 @@ public class NewRecipe {
 	private String recipeTitle;
 	private String ingredients;
 	private String recipeDetail;
-	private String recipeImage;
+	private String newRecipeImage;
 	private Date createdDate;
 	private Date modifiedDate;
 	private int purgeFlag;
@@ -68,11 +68,11 @@ public class NewRecipe {
 	
 	
 	@Column
-	public String getRecipeImage() {
-		return recipeImage;
+	public void setNewRecipeImage(String newRecipeImage) {
+		this.newRecipeImage = newRecipeImage;
 	}
-	public void setRecipeImage(String recipeImage) {
-		this.recipeImage = recipeImage;
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 	
 	
@@ -80,9 +80,10 @@ public class NewRecipe {
 	public Date getCreatedDate() {
 		return createdDate;
 	}
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
+	public String getNewRecipeImage() {
+		return newRecipeImage;
 	}
+	
 	
 	
 	@Column

@@ -1,5 +1,7 @@
 package com.test.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,18 @@ public class RecipeServiceImpl implements RecipeService{
 	public int addNewRecipe(NewRecipe newRecipe) {
 		
 		return this.recipeDao.addNewRecipe(newRecipe);
+		
+		
+	}
+
+	public List<NewRecipe> getRecipeList(String userId) {
+		
+		return this.recipeDao.getRecipeList(userId);
+	}
+
+	public boolean updateNewRecipe(NewRecipe newRecipe) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
