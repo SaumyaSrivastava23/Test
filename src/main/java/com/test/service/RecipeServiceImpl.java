@@ -29,8 +29,13 @@ public class RecipeServiceImpl implements RecipeService{
 	}
 
 	public boolean updateNewRecipe(NewRecipe newRecipe) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return this.recipeDao.updateNewRecipe(newRecipe);
+	}
+
+	public NewRecipe getRecipeId(int recipeId) {
+	
+		return this.recipeDao.getRecipeId(recipeId);
 	}
 
 }

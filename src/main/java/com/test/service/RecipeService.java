@@ -11,5 +11,7 @@ public interface RecipeService {
 	public List <NewRecipe> getRecipeList(String userId);
 	
 	public boolean updateNewRecipe(NewRecipe newRecipe);
+	
+	public NewRecipe getRecipeId(int recipeId);
 
 }

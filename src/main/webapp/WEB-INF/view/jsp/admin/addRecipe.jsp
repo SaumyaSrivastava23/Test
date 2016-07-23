@@ -29,6 +29,10 @@ input[type="file"] {
         <div class="container">
     <% 
 		Registration registration=(Registration)(request.getSession().getAttribute("registration"));
+	    String Mode = (String)request.getAttribute("Mode");
+	  //  if(Mode.equals("add")){
+	    
+    
    %>
            <div class="center">  
                  <h2>Add New Recipe</h2>

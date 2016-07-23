@@ -21,12 +21,7 @@
             <div class="center">  
                  <h2>My Recipes</h2>
             </div> 
- <%--            
-		      <h1>
-			     <small><%= registration.getName() %></small> 
-		      </h1>
-   --%>           <div class="row contact-wrap"> 
-                         <div class="box-tools pull-right">
+             <!--  <div class="box-tools pull-right"> -->
 				         <div class="pull-right " style="padding-left: 20px;">
 				         	
 				         	<a href="addRecipe"><!-- <button class="btn btn-danger btn-xs delete"> --><i class="fa fa-plus"></i>Add Recipe<!-- </button> --></a>
@@ -34,7 +29,13 @@
 <!-- 				         	<a href="adminEmpListExport" ><button class="btn btn-primary btn-sm"><i class="fa fa-fw fa-cloud-upload"></i> Export List</button> </a>
  -->				         	
 				         </div>
-				       </div>
+				     <!--   </div> -->
+            
+   <%--         <h1>
+			     <small><%= registration.getName() %></small> 
+		        </h1>
+   --%>           <div class="row contact-wrap"> 
+                       
                   <table class="table">
 							<thead>
 								<tr>
@@ -94,9 +95,7 @@
 							</tbody>
 						</table>
         
-        </div>
-        
-        
+              </div>
         </div>
 </section>
 </body>

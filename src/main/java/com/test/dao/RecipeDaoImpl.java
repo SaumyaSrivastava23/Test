@@ -62,4 +62,10 @@ public class RecipeDaoImpl implements RecipeDao{
 		return false;
 	}
 
+
+	public NewRecipe getRecipeId(int recipeId) {
+	
+		return (NewRecipe) this.sessionFactory.getCurrentSession().get(NewRecipe.class,recipeId);
+	}
+
 }

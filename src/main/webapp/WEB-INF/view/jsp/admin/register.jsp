@@ -219,6 +219,10 @@ $(document).ready(function()
 		$(".btnSubmit").attr("disabled","disabled");
 		$(".btnSubmit").text("Submiting...");
 	}
+	
+	
+	
+	$("#everything").validate({ onsubmit: true, rules: { dd1: { required: { depends: function(element) { return $("#dd1").val() == "none"; } } }, messages: { dd1: { required: "Please select an option from the list, if none are appropriate please select 'Other'", }, } });
 
 </script>
 

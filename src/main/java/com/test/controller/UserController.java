@@ -145,4 +145,121 @@ public class UserController {
 	}
 	
 	
+	@RequestMapping(value = "/editRecipe", method = RequestMethod.GET)
+	public String editRecipe(ModelMap map, HttpServletRequest request, Principal principal)
+	{
+		String recipeId = request.getParameter("recipeId");
+		if(recipeId != null && recipeId.length() > 0)
+		{
+			NewRecipe recipe= recipeService.getRecipeId(Integer.parseInt(recipeId));
+			if(recipe != null)
+			{
+				NewRecipeModel model = new NewRecipeModel();
+				model.setRecipeId(recipe.getRecipeId());
+				model.setRecipeTitle(recipe.getRecipeTitle());
+				model.setIngredients(recipe.getIngredients());
+				model.setRecipeDetail(recipe.getRecipeDetail());
+			
+				map.addAttribute("recForm", model);
+				
+				return "editRecipe";
+			}
+			
+		}
+		
+		return "redirect:dashboard";
+	}
+	
+	
+	
+	
+	@RequestMapping(value = "/editRecipe", method = RequestMethod.POST)
+	public String editRecipes(@ModelAttribute(value = "recipe") @Valid NewRecipeModel model,BindingResult result,
+			                ModelMap map, HttpServletRequest request, Principal principal)
+	{
+		if (result.hasErrors())
+		{
+			
+			System.out.println("in validation");
+			return "userleaveapplication";
+		} else
+		{
+		
+			String recipeId = (String)request.getParameter("recipeId");
+		  
+		    NewRecipe recipe= recipeService.getRecipeId(Integer.parseInt(recipeId));
+		    if(recipe!=null)
+		    {
+			
+				boolean flag=false;
+				Date date = new Date();
+				Date dt = new Date(date.getTime());
+				recipe.setModifiedDate(dt);
+				
+				
+				recipe.setRecipeTitle(model.getRecipeTitle());
+				recipe.setIngredients(model.getIngredients());
+				recipe.setRecipeDetail(model.getRecipeDetail());
+				
+				try{
+					 Registration reg= registrationservice.getRegistrationByUserId(principal.getName());
+					// recipe.setRegistration(reg);
+					 String userId=reg.getUserId();
+					 
+					 MultipartFile recipeImage = model.getRecipeImage();
+			    
+			            if(recipeImage != null)
+			            {
+				            String oldImage=recipeImage.getOriginalFilename();
+				            
+				            String newImage=null;
+				            try
+				            {
+				                if(!(oldImage.equals("")))
+				                {
+				                	newImage=oldImage.replace(" ", "-");
+				                	
+				                    recipe.setNewRecipeImage(newImage);
+				                    
+				                    File img = new File (ProjectConfig.upload_path+"/"+userId+"/Recipe_Image/"+newImage);
+				                    
+				                    if(!img.exists())
+				                    {
+				                        img.mkdirs();
+				                    }
+				                    recipeImage.transferTo(img);  
+				                }
+				            }
+				            catch (IOException ie)
+				                    {
+				                ie.printStackTrace();
+				            }
+						}
+			            
+				
+				flag = recipeService.updateNewRecipe(recipe);
+				
+				if(flag==true){
+					map.addAttribute("status", "success");
+				}
+				else{
+					map.addAttribute("status", "error");
+				}
+				
+				System.out.println("update"+flag);
+				}
+				catch(Exception e){
+					
+					e.printStackTrace();
+					return "addRecipe";
+				}
+		}
+		return "redirect:dashboard";
+	}
+	
+}
+	
+	
+	
+	
 }

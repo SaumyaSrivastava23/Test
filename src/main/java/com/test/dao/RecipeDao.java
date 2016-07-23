@@ -12,5 +12,7 @@ public interface RecipeDao {
 	
 	
 	public boolean updateNewRecipe(NewRecipe newRecipe);
+	
+	public NewRecipe getRecipeId(int recipeId);
 
 }
