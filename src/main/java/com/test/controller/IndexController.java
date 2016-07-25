@@ -5,6 +5,7 @@ import java.util.TimeZone;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,8 +18,6 @@ import com.test.config.Roles;
 import com.test.config.Validation;
 import com.test.domain.LoginInfo;
 import com.test.domain.Registration;
-import com.test.model.ContactUsModel;
-import com.test.model.RegisterModel;
 import com.test.service.LoginInfoService;
 import com.test.service.MailService;
 import com.test.service.RegisterService;
