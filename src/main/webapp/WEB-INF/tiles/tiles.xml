@@ -55,11 +55,6 @@
         <put-attribute name="body" value="/WEB-INF/view/jsp/admin/dashboard.jsp" />
     </definition>
     
-    <definition name="userDashboard" extends="homeTemplate">
-        <put-attribute name="title" value="TEST -  Dashboard" />
-        <put-attribute name="body" value="/WEB-INF/view/jsp/admin/dashboard.jsp" />
-    </definition>
-    
     <definition name="aboutUs" extends="homeTemplate">
         <put-attribute name="title" value="TEST -  About Us" />
         <put-attribute name="body" value="/WEB-INF/view/jsp/admin/aboutUs.jsp" />
@@ -75,10 +70,25 @@
         <put-attribute name="body" value="/WEB-INF/view/jsp/admin/team.jsp" />
     </definition>
     
+    <definition name="userRecipes" extends="homeTemplate">
+        <put-attribute name="title" value="TEST -  Recipes" />
+        <put-attribute name="body" value="/WEB-INF/view/jsp/admin/dashboard.jsp" />
+    </definition>
+    
     
     <definition name="addRecipe" extends="homeTemplate">
-        <put-attribute name="title" value="TEST -  Team" />
+        <put-attribute name="title" value="TEST -  Recipe" />
         <put-attribute name="body" value="/WEB-INF/view/jsp/admin/addRecipe.jsp" />
+    </definition>
+    
+    <definition name="fullRecipe" extends="homeTemplate">
+        <put-attribute name="title" value="TEST -  Recipes" />
+        <put-attribute name="body" value="/WEB-INF/view/jsp/admin/fullRecipe.jsp" />
+    </definition>
+    
+    <definition name="editRecipe" extends="homeTemplate">
+        <put-attribute name="title" value="TEST -  Recipes" />
+        <put-attribute name="body" value="/WEB-INF/view/jsp/admin/editRecipe.jsp" />
     </definition>
     
 </tiles-definitions>

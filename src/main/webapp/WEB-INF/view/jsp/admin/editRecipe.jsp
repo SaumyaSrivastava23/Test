@@ -1,5 +1,5 @@
 <%@ page import="com.test.domain.Registration" %>
-
+<%@page import="com.test.domain.NewRecipe"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -29,18 +29,18 @@ input[type="file"] {
         <div class="container">
     <% 
 		Registration registration=(Registration)(request.getSession().getAttribute("registration"));
-	    String Mode = (String)request.getAttribute("Mode");
-	
-	    
+    
+        NewRecipe newRecipe=(NewRecipe)(request.getAttribute("recipeDetail"));
+	    	    
     
    %>
            <div class="center">  
-                 <h2>Add New Recipe</h2>
+                 <h2>Edit Recipe</h2>
             </div> 
               <div class="row contact-wrap"> 
             
 	            <%
-	            if(registration!=null){
+	            if(registration!=null && newRecipe!=null){
 	            
 	            %>
             
@@ -67,11 +67,20 @@ input[type="file"] {
 				                 </div>    
 		                 
 				                <div class="form-group col-xs-12 no-padding">
-									<img alt="Recipe" id="output" src="images/Camera_Icon.png" style="max-height: 150px; max-width: 100px" />
+	<%
+									if(newRecipe.getNewRecipeImage() != null)
+									{
+										String img_path = "/food_uploads/"+registration.getUserId()+"/Recipe_Image/"+newRecipe.getNewRecipeImage();
+										 %>
+										 
+											<img alt="Image not available" id="output" src="<%=img_path %>" style="max-height: 150px; max-width: 100px" />
+											<% } else { %>
+												<img alt="Image" id="output" src="images/Camera_Icon.png" style="max-height: 150px; max-width: 100px" />
+											<% } %>
 								</div>
 								
 								<div class="form-group col-xs-12 no-padding">
-									<!-- <label class="custom-file-upload btn btn-block"> -->
+										<!-- <label class="custom-file-upload btn btn-block"> -->
 										<input name="recipeImage" id="u1" type="file" accept="image/jpg,image/png,image/jpeg,image/gif" tabindex="15" onchange="return ValidateFileUpload()" />
 										<!-- <i class="fa fa-fw fa-cloud-upload"></i>
 										Browse Image  -->
@@ -80,7 +89,7 @@ input[type="file"] {
 								</div>
 		                                     
                         <div class="form-group">
-                            <button type="submit" name="submit" class="btn btn-primary btn-lg btnSubmit">Submit</button>
+                            <button type="submit" name="submit" class="btn btn-primary btn-lg btnSubmit">Update</button>
                         </div>
   
                 </form:form>

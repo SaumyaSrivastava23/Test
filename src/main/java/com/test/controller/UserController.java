@@ -32,36 +32,15 @@ public class UserController {
 	@Autowired private RegisterService registrationservice;
 	@Autowired private RecipeService recipeService;
 	
-	@RequestMapping(value="/aboutUs", method=RequestMethod.GET)
-	public String aboutUs(ModelMap map, HttpServletRequest request, Principal principal)
-	{
-		System.out.println("about us page from User Controller");
-		return "aboutUs";
-	}
-	
-	@RequestMapping(value="/services", method=RequestMethod.GET)
-	public String services(ModelMap map, HttpServletRequest request, Principal principal)
-	{
-		System.out.println("services page from User Controller");
-		return "services";
-	}
-	
-	@RequestMapping(value="/team", method=RequestMethod.GET)
-	public String team(ModelMap map, HttpServletRequest request, Principal principal)
-	{
-		System.out.println("team page from User Controller");
-		return "team";
-	}
-	
 	
 
-	@RequestMapping(value="/userDashboard", method=RequestMethod.GET)
+	@RequestMapping(value="/userRecipes", method=RequestMethod.GET)
 	public String userDashboard(ModelMap map, HttpServletRequest request, Principal principal)
 	{
 		List <NewRecipe> recipeList=recipeService.getRecipeList(principal.getName());
 		map.addAttribute("recipeList", recipeList);
 		System.out.println("user dashboard page of user controller");
-		return "userDashboard";
+		return "userRecipes";
 	}
 
 	
@@ -139,7 +118,7 @@ public class UserController {
 			}
 			
 			
-			return "redirect:userDashboard";
+			return "redirect:userRecipes";
 			
 		}
 	}
@@ -151,6 +130,7 @@ public class UserController {
 		String recipeId = request.getParameter("recipeId");
 		if(recipeId != null && recipeId.length() > 0)
 		{
+			
 			NewRecipe recipe= recipeService.getRecipeId(Integer.parseInt(recipeId));
 			if(recipe != null)
 			{
@@ -161,13 +141,13 @@ public class UserController {
 				model.setRecipeDetail(recipe.getRecipeDetail());
 			
 				map.addAttribute("recForm", model);
-				
+				map.addAttribute("recipeDetail", recipe);
 				return "editRecipe";
 			}
 			
 		}
 		
-		return "redirect:dashboard";
+		return "redirect:userRecipes";
 	}
 	
 	
@@ -181,7 +161,7 @@ public class UserController {
 		{
 			
 			System.out.println("in validation");
-			return "userleaveapplication";
+			return "editRecipe";
 		} else
 		{
 		
@@ -251,15 +231,25 @@ public class UserController {
 				catch(Exception e){
 					
 					e.printStackTrace();
-					return "addRecipe";
+					return "editRecipe";
 				}
 		}
-		return "redirect:dashboard";
+		return "redirect:userRecipes";
 	}
 	
 }
 	
-	
+	@RequestMapping(value="/fullRecipe", method=RequestMethod.GET)
+	public String fullRecipe(ModelMap map, HttpServletRequest request, Principal principal)
+	{
+		
+		String recipeId=request.getParameter("recipeId");
+		NewRecipe recipeDetail= recipeService.getRecipeId(Integer.parseInt(recipeId));
+		map.addAttribute("recipeDetail", recipeDetail);
+		System.out.println("full recipe page of user controller");
+		return "fullRecipe";
+		
+	}
 	
 	
 }
