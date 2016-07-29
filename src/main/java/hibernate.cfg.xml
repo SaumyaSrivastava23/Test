@@ -12,6 +12,7 @@
 		<mapping class="com.test.domain.UserRole"/>
 		<mapping class="com.test.domain.ContactUs"/>
 		<mapping class="com.test.domain.NewRecipe"/>
+		<mapping class="com.test.domain.Category"/>
     </session-factory>
     
 </hibernate-configuration>

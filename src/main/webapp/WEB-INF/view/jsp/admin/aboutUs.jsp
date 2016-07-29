@@ -11,7 +11,7 @@
         <div class="container">
 			<div class="center wow fadeInDown">
 				<h2>About Cook Book</h2>
-				<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> et dolore magna aliqua. Ut enim ad minim veniam</p>
+				<p class="lead">We want to make whole food easy and accessible to everyone. We are passionate, driven and dedicated to being part of helping to create a world where healthy eating is considered a normal way of life</p>
 			</div>
 			
 			<!-- about us slider -->

@@ -17,4 +17,6 @@ public interface RecipeDao {
 	
 	public NewRecipe getRecipeId(int recipeId);
 
+	
+	
 }

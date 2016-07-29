@@ -46,13 +46,18 @@ input[type="file"] {
             
                 <div class="status alert alert-success" style="display: none"></div>
                 
-                    <form:form role="form" id="form_add" name="recForm" commandName="recForm" method="POST" action="addRecipe" onsubmit="return validateForm()" autocomplete="off" enctype="multipart/form-data">
+                    <form:form role="form" id="form_edit" name="recForm" commandName="recForm" method="POST" action="editRecipe" onsubmit="return validateForm()" autocomplete="off" enctype="multipart/form-data">
                          
-		                         <div class="form-group">
+                         		  <div class="form-group">
+									<form:hidden path="recipeId" cssClass="form-control" />
+						  		  </div>
+						  			
+						  			
+		                          <div class="form-group">
 		                            <label>Recipe Title</label><span class="text-danger">*</span>
 		                             <form:input path="recipeTitle" class="form-control" maxlength="150" tabindex="1" placeholder="Enter Recipe Title" autofocus="autofocus" />
 			                         <span><form:errors path="recipeTitle" /></span>
-			                     </div>
+			                      </div>
 			                     
 			                     <div class="form-group">
 		                            <label>Recipe Ingredients</label><span class="text-danger">*</span>
@@ -173,8 +178,8 @@ input[type="file"] {
    function validateForm(){
 	
 	 var detail=CKEDITOR.instances['recipeDetail'].getData();
-	 var title= $("#form_add #recipeTitle").val();
-	 var ingredients=$("#form_add #ingredients").val();
+	 var title= $("#form_edit #recipeTitle").val();
+	 var ingredients=$("#form_edit #ingredients").val();
 	 
 	 var valid=true;
 	 $('.has-error').removeClass("has-error");
@@ -203,7 +208,7 @@ input[type="file"] {
 	}
 	
 	$(".btnSubmit").attr("disabled","disabled");
-	$(".btnSubmit").text("Saving...")
+	$(".btnSubmit").text("Updating...")
 	
 }
 

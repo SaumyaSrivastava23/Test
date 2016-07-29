@@ -20,15 +20,16 @@
 		NewRecipe newRecipe=(NewRecipe)(request.getAttribute("recipeDetail"));
        
    %>
-        <div class="center">
-            <h2>Blogs</h2>
-            <p class="lead">Pellentesque habitant morbi tristique senectus et netus et malesuada</p>
-        </div>
-   <%
+    <%
    if(newRecipe!=null){
 
 
    %>
+        <div class="center">
+            <h2><%=newRecipe.getRecipeTitle() %></h2>
+            <p class="lead">Pellentesque habitant morbi tristique senectus et netus et malesuada</p>
+        </div>
+  
         <div class="blog">
             <div class="row">
                 <div class="col-md-8">
@@ -54,8 +55,8 @@
                             <div class="row">  
                                 <div class="col-xs-12 col-sm-2 text-center">
                                     <div class="entry-meta">
-                                        <span id="publish_date">07  NOV</span>
-                                        <span><i class="fa fa-user"></i> <a href="#"> John Doe</a></span>
+                                        <span id="publish_date"><%=DateFormats.ddMMM().format(newRecipe.getCreatedDate()) %></span>
+                                        <span><i class="fa fa-user"></i> <a href="#"> <%=registration.getName() %></a></span>
                                         <span><i class="fa fa-comment"></i> <a href="#">2 Comments</a></span>
                                         <span><i class="fa fa-heart"></i><a href="#">56 Likes</a></span>
                                     </div>

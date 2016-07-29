@@ -9,5 +9,11 @@ public class DateFormats {
 		SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy");
 		return df;
 	}
+	
+	public static SimpleDateFormat ddMMM()
+	{
+		SimpleDateFormat df = new SimpleDateFormat("dd MMM");
+		return df;
+	}
 
 }

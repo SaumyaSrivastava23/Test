@@ -41,8 +41,8 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-2 text-center">
                                 <div class="entry-meta">
-                                    <span id="publish_date">07  NOV</span>
-                                    <span><i class="fa fa-user"></i> <a href="#">John Doe</a></span>
+                                    <span id="publish_date"><%=DateFormats.ddMMM().format(rl.getCreatedDate()) %></span>
+                                    <span><i class="fa fa-user"></i> <a href="#"><%=registration.getName() %></a></span>
                                     <span><i class="fa fa-comment"></i> <a href="blog-item.html#comments">2 Comments</a></span>
                                     <span><i class="fa fa-heart"></i><a href="#">56 Likes</a></span>
                                 </div>
@@ -71,8 +71,8 @@
 												%>
                                                                
                                 
-                                <h2><a href="fullRecipe?recipeId=<%=rl.getRecipeId()%>">Recipe Name</a></h2>
-                                <h3>Curabitur quis libero leo, pharetra mattis eros. Praesent consequat libero eget dolor convallis vel rhoncus magna scelerisque. Donec nisl ante, elementum eget posuere a, consectetur a metus. Proin a adipiscing sapien. Suspendisse vehicula porta lectus vel semper. Nullam sapien elit, lacinia eu tristique non.posuere at mi. Morbi at turpis id urna ullamcorper ullamcorper.</h3>
+                                <h2><a href="fullRecipe?recipeId=<%=rl.getRecipeId()%>"><%=rl.getRecipeTitle() %></a></h2>
+                                <h3><%=rl.getRecipeDetail() %></h3>
                                 <a class="btn btn-primary readmore" href="fullRecipe?recipeId=<%=rl.getRecipeId()%>">Read More <i class="fa fa-angle-right"></i></a>
                             </div>
                         
