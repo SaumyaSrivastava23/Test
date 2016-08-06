@@ -48,11 +48,11 @@
 			
 			
 			<!-- Our Skill -->
-			<div class="skill-wrap clearfix">
+			   <div class="skill-wrap clearfix">
 			
 				<div class="center wow fadeInDown">
 					<h2>Our Varities</h2>
-					<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> et dolore magna aliqua. Ut enim ad minim veniam</p>
+					<p class="lead"></p>
 				</div>
 				
 				<div class="row">
@@ -60,8 +60,8 @@
 					<div class="col-sm-3">
 						<div class="sinlge-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
 							<div class="joomla-skill">                                   
-								<p><em>95%</em></p>
-								<p>Indian</p>
+								<p><em>85%</em></p>
+								<p>Italian</p>
 							</div>
 						</div>
 					</div>
@@ -69,8 +69,8 @@
 					 <div class="col-sm-3">
 						<div class="sinlge-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
 							<div class="html-skill">                                  
-								<p><em>85%</em></p>
-								<p>Italian</p>
+								<p><em>95%</em></p>
+								<p>Indian</p>
 							</div>
 						</div>
 					</div>
@@ -116,7 +116,7 @@
                             <li><a href="#">Meet the team</a></li>
                             <li><a href="#">Copyright</a></li>
                             <li><a href="#">Terms of use</a></li>
-                            <li><a href="#">Privacy policy</a></li>
+                            <li><a href="privatePolicy">Privacy policy</a></li>
                             <li><a href="#">Contact us</a></li>
                         </ul>
                     </div>    

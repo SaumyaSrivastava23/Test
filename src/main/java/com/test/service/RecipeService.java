@@ -13,5 +13,6 @@ public interface RecipeService {
 	public boolean updateNewRecipe(NewRecipe newRecipe);
 	
 	public NewRecipe getRecipeId(int recipeId);
-
+	
+	
 }

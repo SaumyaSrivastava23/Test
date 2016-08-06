@@ -3,6 +3,8 @@ package com.test.model;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.test.domain.Category;
+
 public class NewRecipeModel {
 	
 	
@@ -19,7 +21,7 @@ public class NewRecipeModel {
 	
 	private MultipartFile recipeImage;
 	
-	
+	private Category category;
 	
 	public int getRecipeId() {
 		return recipeId;
@@ -54,12 +56,19 @@ public class NewRecipeModel {
 	}
 
 	
-	
 	public String getIngredients() {
 		return ingredients;
 	}
 	public void setIngredients(String ingredients) {
 		this.ingredients = ingredients;
+	}
+	
+	
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 	
 	

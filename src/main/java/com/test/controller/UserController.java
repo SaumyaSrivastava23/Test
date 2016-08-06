@@ -19,9 +19,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.test.config.ProjectConfig;
+import com.test.domain.Category;
 import com.test.domain.NewRecipe;
 import com.test.domain.Registration;
 import com.test.model.NewRecipeModel;
+import com.test.service.CategoryService;
 import com.test.service.RecipeService;
 import com.test.service.RegisterService;
 
@@ -31,7 +33,7 @@ public class UserController {
 	
 	@Autowired private RegisterService registrationservice;
 	@Autowired private RecipeService recipeService;
-	
+	@Autowired private CategoryService categoryService;
 	
 
 	@RequestMapping(value="/userRecipes", method=RequestMethod.GET)
@@ -48,6 +50,7 @@ public class UserController {
 	public String addRecipe(ModelMap map, HttpServletRequest request, Principal principal)
 	{
 		map.addAttribute("recForm", new NewRecipeModel());
+		map.addAttribute("cList", categoryService.getCategoryList());
 		System.out.println("addRecipe page from User Controller");
 		return "addRecipe";
 	}
@@ -71,7 +74,9 @@ public class UserController {
 			
 			try{
 				 Registration reg= registrationservice.getRegistrationByUserId(principal.getName());
+				 Category category=categoryService.getCategory(recipe.getCategory().getCategoryId());
 				 recipe.setRegistration(reg);
+				 recipe.setCategory(category);
 				 String userId=reg.getUserId();
 				 
 				 MultipartFile recipeImage = model.getRecipeImage();
@@ -139,9 +144,11 @@ public class UserController {
 				model.setRecipeTitle(recipe.getRecipeTitle());
 				model.setIngredients(recipe.getIngredients());
 				model.setRecipeDetail(recipe.getRecipeDetail());
-			
+				model.setCategory(recipe.getCategory());
+				map.addAttribute("cList", categoryService.getCategoryList());
 				map.addAttribute("recForm", model);
 				map.addAttribute("recipeDetail", recipe);
+				
 				return "editRecipe";
 			}
 			
@@ -180,6 +187,8 @@ public class UserController {
 				recipe.setRecipeTitle(model.getRecipeTitle());
 				recipe.setIngredients(model.getIngredients());
 				recipe.setRecipeDetail(model.getRecipeDetail());
+				Category category=categoryService.getCategory(model.getCategory().getCategoryId());
+				recipe.setCategory(category);
 				
 				try{
 					 Registration reg= registrationservice.getRegistrationByUserId(principal.getName());

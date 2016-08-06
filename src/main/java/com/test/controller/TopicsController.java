@@ -37,5 +37,12 @@ public class TopicsController {
 		return "team";
 	}
 	
+	@RequestMapping(value="/privatePolicy", method=RequestMethod.GET)
+	public String policy(ModelMap map, HttpServletRequest request, Principal principal)
+	{
+		System.out.println("privatePolicy page from User Controller");
+		return "privatePolicy";
+	}
+	
 	
 }

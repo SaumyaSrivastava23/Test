@@ -1,7 +1,7 @@
 <%@ page import="com.test.domain.Registration" %>
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -48,18 +48,27 @@ input[type="file"] {
                 
                     <form:form role="form" id="form_add" name="recForm" commandName="recForm" method="POST" action="addRecipe" onsubmit="return validateForm()" autocomplete="off" enctype="multipart/form-data">
                          
-		                         <div class="form-group">
+		                        <div class="form-group">
 		                            <label>Recipe Title</label><span class="text-danger">*</span>
-		                             <form:input path="recipeTitle" class="form-control" maxlength="150" tabindex="1" placeholder="Enter Recipe Title" autofocus="autofocus" />
-			                         <span><form:errors path="recipeTitle" /></span>
-			                     </div>
+		                            <form:input path="recipeTitle" class="form-control" maxlength="150" tabindex="1" placeholder="Enter Recipe Title" autofocus="autofocus" />
+			                        <span><form:errors path="recipeTitle" /></span>
+			                    </div>
 			                     
-			                     <div class="form-group">
+			                    <div class="form-group">
 		                            <label>Recipe Ingredients</label><span class="text-danger">*</span>
-		                             <form:input path="ingredients" class="form-control" tabindex="5" placeholder="Enter Recipe Ingredients" autofocus="autofocus" />
-			                         <span><form:errors path="ingredients" /></span>
-			                     </div>
-		                   
+		                            <form:input path="ingredients" class="form-control" tabindex="5" placeholder="Enter Recipe Ingredients" autofocus="autofocus" />
+			                        <span><form:errors path="ingredients" /></span>
+			                    </div>
+			                    <div class="form-group">
+				                   <label>Category<span class="text-danger">*</span></label>
+				                   <form:select path="category.categoryId" id="category" class="form-control">
+				                     <form:option value='0'>---SELECT---</form:option>
+				                  		<c:forEach var="item" items="${cList}">
+											<form:option value='${item.categoryId }'>${item.categoryName }</form:option>
+										</c:forEach>
+				                   </form:select>
+				                  <span class="text-danger"><form:errors path="category" /></span>
+				                </div>
 		                        <div class="form-group">
 		                            <label>Recipe Description</label><span class="text-danger">*</span>
 		       		                <form:textarea path="recipeDetail" class="form-control ckeditor" tabindex="10" rows="3" cols="50" placeholder="Enter Recipe Detail" />

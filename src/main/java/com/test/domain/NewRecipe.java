@@ -1,7 +1,6 @@
 package com.test.domain;
 
 import java.util.Date;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name="newrecipe")
@@ -26,6 +26,7 @@ public class NewRecipe {
 	private Date createdDate;
 	private Date modifiedDate;
 	private int purgeFlag;
+	private Category category;
 	
 	
 	@Id
@@ -115,11 +116,14 @@ public class NewRecipe {
 	}
 	
 	
-	
-	
-	
-	
-	
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="categoryId", referencedColumnName="categoryId")
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
 	
 
 }

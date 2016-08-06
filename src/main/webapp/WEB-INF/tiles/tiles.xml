@@ -91,4 +91,11 @@
         <put-attribute name="body" value="/WEB-INF/view/jsp/admin/editRecipe.jsp" />
     </definition>
     
+    
+    
+    <definition name="privatePolicy" extends="homeTemplate">
+        <put-attribute name="title" value="TEST -  Private Policy" />
+        <put-attribute name="body" value="/WEB-INF/view/jsp/admin/privatePolicy.jsp" />
+    </definition>
+    
 </tiles-definitions>

@@ -99,7 +99,7 @@
         <div class="container">
             <div class="center wow fadeInDown">
                 <h2>Recent Recipies</h2>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> et dolore magna aliqua. Ut enim ad minim veniam</p>
+                <p class="lead">Recent  <br> </p>
             </div>
 
             <div class="row">
@@ -306,7 +306,7 @@
                   <div class="col-sm-6">
                     <div class="media-body">
                             <h2>Have a question or need a custom quote?</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                            <p>We are here to answer any question you may have about us.</p>
                     </div>
                   </div>
                   <div class="col-sm-4">
@@ -327,7 +327,7 @@
         <div class="container">
             <div class="center wow fadeInDown">
                 <h2>Our Team</h2>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> et dolore magna aliqua. Ut enim ad minim veniam</p>
+                <p class="lead"> <br> </p>
             </div>    
 
             <div class="partners">
