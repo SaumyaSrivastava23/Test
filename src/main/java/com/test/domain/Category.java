@@ -25,6 +25,7 @@ public class Category {
 	private Date modifiedDate;
 	
 	private Date deleteDate;
+	
 
 	@Id
 	@Column(nullable=false)

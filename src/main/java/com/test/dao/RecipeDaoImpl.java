@@ -8,26 +8,27 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.test.domain.NewRecipe;
+import com.test.domain.NewRecipes;
 
 @Repository
 public class RecipeDaoImpl implements RecipeDao{
 
 	@Autowired private SessionFactory sessionFactory;
 	
-	public int addNewRecipe(NewRecipe newRecipe) {
-		this.sessionFactory.getCurrentSession().save(newRecipe);
+	public int addNewRecipe(NewRecipes newRecipes) {
+		
+		this.sessionFactory.getCurrentSession().save(newRecipes);
 		this.sessionFactory.getCurrentSession().flush();
-		return newRecipe.getRecipeId();
+		return newRecipes.getRecipeId();
 	}
 
 	
 	@SuppressWarnings("unchecked")
-	public List<NewRecipe> getRecipeList(String userId) {
+	public List<NewRecipes> getRecipeList(String userId) {
 		
 		try{
 			
-			List <NewRecipe> list= this.sessionFactory.getCurrentSession().createCriteria(NewRecipe.class)
+			List <NewRecipes> list= this.sessionFactory.getCurrentSession().createCriteria(NewRecipes.class)
 					.createAlias("registration", "reg")
 					.add(Restrictions.eq("reg.userId", userId))
 					.addOrder(Order.desc("createdDate"))
@@ -47,10 +48,10 @@ public class RecipeDaoImpl implements RecipeDao{
 	}
 
 
-	public boolean updateNewRecipe(NewRecipe newRecipe) {
+	public boolean updateNewRecipe(NewRecipes newRecipes) {
 		try {
 			
-			this.sessionFactory.getCurrentSession().update(newRecipe);
+			this.sessionFactory.getCurrentSession().update(newRecipes);
 			this.sessionFactory.getCurrentSession().flush();
 			return true;
 			
@@ -63,9 +64,9 @@ public class RecipeDaoImpl implements RecipeDao{
 	}
 
 
-	public NewRecipe getRecipeId(int recipeId) {
+	public NewRecipes getRecipeId(int recipeId) {
 	
-		return (NewRecipe) this.sessionFactory.getCurrentSession().get(NewRecipe.class,recipeId);
+		return (NewRecipes) this.sessionFactory.getCurrentSession().get(NewRecipes.class,recipeId);
 	}
 
 }

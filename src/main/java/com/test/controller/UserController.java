@@ -5,22 +5,20 @@ import java.io.IOException;
 import java.security.Principal;
 import java.util.Date;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.test.config.ProjectConfig;
 import com.test.domain.Category;
-import com.test.domain.NewRecipe;
+import com.test.domain.NewRecipes;
 import com.test.domain.Registration;
 import com.test.model.NewRecipeModel;
 import com.test.service.CategoryService;
@@ -39,7 +37,7 @@ public class UserController {
 	@RequestMapping(value="/userRecipes", method=RequestMethod.GET)
 	public String userDashboard(ModelMap map, HttpServletRequest request, Principal principal)
 	{
-		List <NewRecipe> recipeList=recipeService.getRecipeList(principal.getName());
+		List <NewRecipes> recipeList=recipeService.getRecipeList(principal.getName());
 		map.addAttribute("recipeList", recipeList);
 		System.out.println("user dashboard page of user controller");
 		return "userRecipes";
@@ -58,10 +56,16 @@ public class UserController {
 	
 	@RequestMapping(value="/addRecipe", method=RequestMethod.POST)
 	public String addRecipes(@ModelAttribute(value="recForm") @Valid NewRecipeModel model, BindingResult result,
-		                     @ModelAttribute(value="recipe") NewRecipe recipe, ModelMap map, HttpServletRequest request, Principal principal)
+		                     @ModelAttribute(value="recipe") NewRecipes recipe, ModelMap map, HttpServletRequest request, Principal principal)
 	{
-		if(result.hasErrors()){
+		if(result.hasErrors() || model.getCategory().getCategoryId()<=0){
 			
+			if(model.getCategory().getCategoryId()<=0)
+			{
+				result.addError(new FieldError("recForm", "category", model.getCategory() , false, new String[1],new String[1], "Please select category"));
+			}
+			
+			map.addAttribute("cList", categoryService.getCategoryList());
 			System.out.println("Invalidate ");
 			return "addRecipe";
 		}
@@ -74,9 +78,9 @@ public class UserController {
 			
 			try{
 				 Registration reg= registrationservice.getRegistrationByUserId(principal.getName());
-				 Category category=categoryService.getCategory(recipe.getCategory().getCategoryId());
-				 recipe.setRegistration(reg);
-				 recipe.setCategory(category);
+			     Category category=categoryService.getCategory(recipe.getCategory().getCategoryId());
+			     recipe.setRegistration(reg);
+			     recipe.setCategory(category);
 				 String userId=reg.getUserId();
 				 
 				 MultipartFile recipeImage = model.getRecipeImage();
@@ -116,6 +120,7 @@ public class UserController {
 				 }
 				
 			}
+			
 			catch(Exception e){
 				
 				e.printStackTrace();
@@ -136,7 +141,7 @@ public class UserController {
 		if(recipeId != null && recipeId.length() > 0)
 		{
 			
-			NewRecipe recipe= recipeService.getRecipeId(Integer.parseInt(recipeId));
+			NewRecipes recipe= recipeService.getRecipeId(Integer.parseInt(recipeId));
 			if(recipe != null)
 			{
 				NewRecipeModel model = new NewRecipeModel();
@@ -164,17 +169,25 @@ public class UserController {
 	public String editRecipes(@ModelAttribute(value = "recipe") @Valid NewRecipeModel model,BindingResult result,
 			                ModelMap map, HttpServletRequest request, Principal principal)
 	{
-		if (result.hasErrors())
-		{
+			
+		    if(result.hasErrors() || model.getCategory().getCategoryId()<=0){
+			
+			if(model.getCategory().getCategoryId()<=0)
+			{
+				result.addError(new FieldError("recForm", "category", model.getCategory() , false, new String[1],new String[1], "Please select category"));
+			}
+			
+			map.addAttribute("cList", categoryService.getCategoryList());
 			
 			System.out.println("in validation");
 			return "editRecipe";
-		} else
+		}
+		    else
 		{
 		
 			String recipeId = (String)request.getParameter("recipeId");
 		  
-		    NewRecipe recipe= recipeService.getRecipeId(Integer.parseInt(recipeId));
+		    NewRecipes recipe= recipeService.getRecipeId(Integer.parseInt(recipeId));
 		    if(recipe!=null)
 		    {
 			
@@ -192,7 +205,7 @@ public class UserController {
 				
 				try{
 					 Registration reg= registrationservice.getRegistrationByUserId(principal.getName());
-					// recipe.setRegistration(reg);
+					 recipe.setRegistration(reg);
 					 String userId=reg.getUserId();
 					 
 					 MultipartFile recipeImage = model.getRecipeImage();
@@ -253,7 +266,7 @@ public class UserController {
 	{
 		
 		String recipeId=request.getParameter("recipeId");
-		NewRecipe recipeDetail= recipeService.getRecipeId(Integer.parseInt(recipeId));
+		NewRecipes recipeDetail= recipeService.getRecipeId(Integer.parseInt(recipeId));
 		map.addAttribute("recipeDetail", recipeDetail);
 		System.out.println("full recipe page of user controller");
 		return "fullRecipe";

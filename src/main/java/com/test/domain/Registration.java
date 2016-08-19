@@ -43,8 +43,8 @@ public class Registration {
 	
 	private LoginInfo log;
 	
-	private Set <NewRecipe> NewRecipe = new HashSet<NewRecipe>();
-
+	
+	private Set <NewRecipes> newRecipes = new HashSet<NewRecipes>();
 	
 	@Id
 	@Column(nullable=false)
@@ -150,19 +150,16 @@ public class Registration {
 		this.log = log;
 	}
 
+		
 	
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="registration")
-	public Set<NewRecipe> getNewRecipe() {
-		return NewRecipe;
+	public Set<NewRecipes> getNewRecipes() {
+		return newRecipes;
 	}
 
-	public void setNewRecipe(Set<NewRecipe> newRecipe) {
-		NewRecipe = newRecipe;
+	public void setNewRecipes(Set<NewRecipes> newRecipes) {
+		this.newRecipes = newRecipes;
 	}
-	
-	
-	
-	
-	
+
 	
 }

@@ -1,3 +1,4 @@
+<%@ page import="com.test.domain.Registration" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -23,8 +24,37 @@
     <![endif]-->       
     <link rel="shortcut icon" href="images/ico/red-chilly.ico">
     
+    
+    
+ <script>
+	function getLogOut() {
+		if (XMLHttpRequest) {
+			x = new XMLHttpRequest();
+		} else {
+			x = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		x.onreadystatechange = function() {
+			if (x.readyState == 4 && x.status == 200) {
+				var res = x.responseText;
+				// 		    		 alert(res);
+				window.location.href = "${pageContext.request.contextPath}/j_spring_security_logout";
+			}
+		}
+		x.open("GET", "${pageContext.request.contextPath}/insertLogOut", true);
+		x.send();
+		return true;
+	}
+</script>
+    
+    
+    
 </head><!--/head-->
 <body class="homepage">
+
+<% 
+		Registration registration=(Registration)(request.getSession().getAttribute("registration"));
+
+%>
     <header id="header">
         <div class="top-bar">
             <div class="container">
@@ -74,12 +104,41 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Recipies <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Blog Single</a></li> --> 
+                                <%
+                        
+		                        if(registration!=null){
+		                        	
+		                        %>
+		                        <li><a onclick="getLogOut()">Sign Out</a></li>
+		                        
+		                        <%
+		                        }
+		                        else {
+		                        %>
                                 <li><a href="login">Login</a></li>
+                                
+                                <%
+		                        }
+                                %>
                                 <li><a href="addUser">Register</a></li>
                               
                            <!--  </ul>
                         </li> -->
                         <li><a href="addRecipe">Add Recipe</a></li> 
+                        
+                        <%
+                        
+                        if(registration!=null){
+                        	
+                        %>
+                        	
+                        	 <li><a href="userRecipes">Get Recipe</a></li>
+                        	
+                        <%
+                        	
+                        }
+                        
+                        %>
                         <li><a href="contact">Contact</a></li>                        
                     </ul>
                 </div>

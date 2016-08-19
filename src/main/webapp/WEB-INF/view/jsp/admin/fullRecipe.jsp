@@ -1,4 +1,4 @@
-<%@page import="com.test.domain.NewRecipe"%>
+<%@page import="com.test.domain.NewRecipes"%>
 <%@page import="com.test.domain.Registration"%>
 <%@page import="com.test.config.DateFormats"%>
 <%@page import="java.util.List"%>
@@ -17,7 +17,7 @@
 
    <% 
         Registration registration=(Registration)(request.getSession().getAttribute("registration"));
-		NewRecipe newRecipe=(NewRecipe)(request.getAttribute("recipeDetail"));
+		NewRecipes newRecipe=(NewRecipes)(request.getAttribute("recipeDetail"));
        
    %>
     <%

@@ -6,7 +6,7 @@ import com.test.domain.Category;
 
 public interface CategoryService {
 	
-public int addCategory(Category category);
+	public int addCategory(Category category);
 	
 	public boolean updateCategory(Category category);
 	

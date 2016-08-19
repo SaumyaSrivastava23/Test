@@ -2,17 +2,17 @@ package com.test.service;
 
 import java.util.List;
 
-import com.test.domain.NewRecipe;
+import com.test.domain.NewRecipes;
 
 public interface RecipeService {
 	
-	public int addNewRecipe(NewRecipe newRecipe);
+	public int addNewRecipe(NewRecipes newRecipes);
 	
-	public List <NewRecipe> getRecipeList(String userId);
+	public List <NewRecipes> getRecipeList(String userId);
 	
-	public boolean updateNewRecipe(NewRecipe newRecipe);
+	public boolean updateNewRecipe(NewRecipes newRecipes);
 	
-	public NewRecipe getRecipeId(int recipeId);
+	public NewRecipes getRecipeId(int recipeId);
 	
 	
 }

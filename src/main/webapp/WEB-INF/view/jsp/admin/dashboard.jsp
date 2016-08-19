@@ -1,4 +1,4 @@
-<%@page import="com.test.domain.NewRecipe"%>
+<%@page import="com.test.domain.NewRecipes"%>
 <%@page import="com.test.domain.Registration"%>
 <%@page import="com.test.config.DateFormats"%>
 <%@page import="java.util.List"%>
@@ -30,11 +30,11 @@
             <div class="row">
                  <div class="col-md-8">
                   <%
-								List<NewRecipe> recp_list = (List)request.getAttribute("recipeList");
+								List<NewRecipes> recp_list = (List)request.getAttribute("recipeList");
 								if(recp_list != null && !recp_list.isEmpty())
 								{ 
 									int i=1;
-									for(NewRecipe rl : recp_list)
+									for(NewRecipes rl : recp_list)
 									{
 										%>
                     <div class="blog-item">

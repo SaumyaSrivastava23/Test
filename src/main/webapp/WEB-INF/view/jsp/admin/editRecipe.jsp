@@ -1,5 +1,6 @@
 <%@ page import="com.test.domain.Registration" %>
-<%@page import="com.test.domain.NewRecipe"%>
+<%@page import="com.test.domain.NewRecipes"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -30,7 +31,7 @@ input[type="file"] {
     <% 
 		Registration registration=(Registration)(request.getSession().getAttribute("registration"));
     
-        NewRecipe newRecipe=(NewRecipe)(request.getAttribute("recipeDetail"));
+        NewRecipes newRecipe=(NewRecipes)(request.getAttribute("recipeDetail"));
 	    	    
     
    %>
@@ -64,6 +65,17 @@ input[type="file"] {
 		                             <form:input path="ingredients" class="form-control" tabindex="5" placeholder="Enter Recipe Ingredients" autofocus="autofocus" />
 			                         <span><form:errors path="ingredients" /></span>
 			                     </div>
+		                   
+		                         <div class="form-group">
+				                   <label>Category<span class="text-danger">*</span></label>
+				                   <form:select path="category.categoryId" id="category" class="form-control">
+				                     <form:option value='0'>---SELECT---</form:option>
+				                  		<c:forEach var="item" items="${cList}">
+											<form:option value='${item.categoryId }'>${item.categoryName }</form:option>
+										</c:forEach>
+				                   </form:select>
+				                  <span class="text-danger"><form:errors path="category" /></span>
+				                 </div>
 		                   
 		                        <div class="form-group">
 		                            <label>Recipe Description</label><span class="text-danger">*</span>

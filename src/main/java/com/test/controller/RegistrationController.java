@@ -96,7 +96,7 @@ public class RegistrationController {
 				if(reg1 != null)
 				{
 		            map.addAttribute("status", "success");
-		            return "addUser";
+		            return "redirect:login";
 				}
 				
 			}

@@ -11,8 +11,9 @@
 		<mapping class="com.test.domain.LoginInfo"/>
 		<mapping class="com.test.domain.UserRole"/>
 		<mapping class="com.test.domain.ContactUs"/>
-		<mapping class="com.test.domain.NewRecipe"/>
+		<mapping class="com.test.domain.NewRecipes"/>
 		<mapping class="com.test.domain.Category"/>
+		<mapping class="com.test.domain.Persistent_Logins"/>
     </session-factory>
     
 </hibernate-configuration>
